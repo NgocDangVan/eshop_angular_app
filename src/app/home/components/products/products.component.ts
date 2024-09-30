@@ -1,16 +1,24 @@
 import { Component } from '@angular/core';
-import { ProductsService } from './products.service';
-import { ProductListItem } from './products.type';
+import { ProductStoreItem } from '../../services/product/product.storeItem';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { Product } from '../../types/products.type';
+import { CartStoreItem } from '../../services/cart/cart.storeItem';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
-  providers: [ProductsService]
+  styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  products: ProductListItem[] = [];
-  constructor(productService: ProductsService){
-    this.products = productService.getProductList();
+  faShoppingCart = faShoppingCart;
+  constructor(
+    public productsStore: ProductStoreItem,
+    private cart: CartStoreItem
+  ){
+
+  }
+
+  addToCart(product: Product) {
+    this.cart.addProduct(product);
   }
 }
