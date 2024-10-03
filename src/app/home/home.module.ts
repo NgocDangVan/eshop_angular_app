@@ -18,6 +18,10 @@ import { ProductsGalleryComponent } from './components/products-gallery/products
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 import { CartStoreItem } from './services/cart/cart.storeItem';
 import { CartComponent } from './components/cart/cart.component';
+import { UserSignupComponent } from './components/users/user-signup/user-signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserLoginComponent } from './components/users/user-login/user-login.component';
+import { UserService } from './services/users/user-service.service';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -28,6 +32,8 @@ import { CartComponent } from './components/cart/cart.component';
     ProductsGalleryComponent,
     ProductdetailsComponent,
     CartComponent,
+    UserSignupComponent,
+    UserLoginComponent,
   ],
   imports: [
     CommonModule,
@@ -35,14 +41,16 @@ import { CartComponent } from './components/cart/cart.component';
     SharedModule,
     HttpClientModule,
     RouterModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     CategoryService,
     CategoriesStoreItem,
     ProductStoreItem,
     ProductsService,
-    CartStoreItem
+    CartStoreItem,
+    UserService
   ]
 })
 export class HomeModule { }
